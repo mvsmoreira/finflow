@@ -7,4 +7,5 @@ export const HeaderContainer = styled.header`
   height: 4.5rem;
   padding: 0 0.75rem;
   margin: 1rem auto 0;
+  gap: 1.5rem;
 `
