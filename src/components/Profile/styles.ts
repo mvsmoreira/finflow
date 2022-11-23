@@ -10,6 +10,10 @@ export const ProfileContainer = styled.div`
 export const TextContainer = styled.div`
   text-align: right;
   margin-right: 1rem;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `
 
 export const Title = styled.p`

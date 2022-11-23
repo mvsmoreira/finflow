@@ -21,6 +21,10 @@ export const SearchContainer = styled.div`
     border-color: ${(props) => props.theme['$main']};
     background-color: ${(props) => props.theme['gray-100']};
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Icon = styled(MagnifyingGlass)`
