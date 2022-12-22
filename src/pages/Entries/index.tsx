@@ -1,10 +1,13 @@
 import { FilterBar } from "../../components/FilterBar"
-import { EntriesContainer } from "./styles"
+import { NewTransactionButton } from "../../components/NewTransactionButton"
+import { EntriesContainer, TransactionsContainer } from "./styles"
 
 export const Entries = () => {
   return (
     <EntriesContainer>
-      <FilterBar />
+      <TransactionsContainer>
+        <NewTransactionButton />
+      </TransactionsContainer>
     </EntriesContainer>
   )
 }

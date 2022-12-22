@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Icon } from "../WidgetBar/styles";
 
 export const FilterContainer = styled.div`
-  grid-area: summary-cards;
   display: flex;
   align-items: center;
   margin-top: 2rem;
