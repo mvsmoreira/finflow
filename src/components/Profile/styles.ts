@@ -6,6 +6,7 @@ export const ProfileContainer = styled.div`
   align-items: center;
   padding: 0 0.5rem;
 `
+ProfileContainer.displayName = 'ProfileContainer'
 
 export const TextContainer = styled.div`
   text-align: right;
@@ -15,15 +16,18 @@ export const TextContainer = styled.div`
     display: none;
   }
 `
+TextContainer.displayName = 'TextContainer'
 
 export const Title = styled.p`
   color: ${(props) => props.theme['gray-800']};
 `
+Title.displayName = 'Title'
 
 export const Subtitle = styled.div`
   color: ${(props) => props.theme['gray-500']};
   font-size: 0.8rem;
 `
+Subtitle.displayName = 'Subtitle'
 
 export const AvatarContainer = styled(Avatar.Root)`
   border-radius: 9999px;
@@ -32,6 +36,7 @@ export const AvatarContainer = styled(Avatar.Root)`
   height: 3rem;
   overflow: hidden;
 `
+AvatarContainer.displayName = 'AvatarContainer'
 
 export const AvatarImage = styled(Avatar.Image)`
   width: 100%;
@@ -39,6 +44,7 @@ export const AvatarImage = styled(Avatar.Image)`
   object-fit: cover;
   border-radius: inherit;
 `
+AvatarImage.displayName = 'AvatarImage'
 
 export const AvatarFallback = styled(Avatar.Fallback)`
   display: flex;
@@ -54,4 +60,5 @@ export const AvatarFallback = styled(Avatar.Fallback)`
     height: 1.5rem;
   }
 `
+AvatarFallback.displayName = 'AvatarFallback'
 

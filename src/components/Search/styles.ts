@@ -26,6 +26,7 @@ export const SearchContainer = styled.div`
     display: none;
   }
 `
+SearchContainer.displayName = 'SearchContainer'
 
 export const Icon = styled(MagnifyingGlass)`
   width: 1.5rem;
@@ -33,6 +34,7 @@ export const Icon = styled(MagnifyingGlass)`
   font-weight: bold;
   color: ${(props) => props.theme['gray-500']};
 `
+Icon.displayName = 'Icon'
 
 export const Input = styled.input`
   all: unset;
@@ -43,3 +45,4 @@ export const Input = styled.input`
     color: ${(props) => props.theme['gray-500']};
   }
 `
+Input.displayName = 'Input'

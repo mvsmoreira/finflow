@@ -9,3 +9,4 @@ export const LogoContainer = styled.a`
     margin: 0;
   }
 `
+LogoContainer.displayName = 'LogoContainer'

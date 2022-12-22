@@ -15,6 +15,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0; 
   }
 
+  a {
+    all: unset;
+  }
+
   input[type=number] {
     -moz-appearance:textfield;
   }

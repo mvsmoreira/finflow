@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   display: flex;
+  grid-area: header;
   align-items: center;
   width: 100%;
   height: 4.5rem;
@@ -16,3 +17,4 @@ export const HeaderContainer = styled.header`
     padding: 1rem;
   }
 `
+HeaderContainer.displayName = 'HeaderContainer'

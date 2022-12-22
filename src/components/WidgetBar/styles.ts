@@ -5,8 +5,8 @@ export const WidgetBarContainer = styled.div`
   margin-left: auto;
   gap: 1.5rem;
   border-color: ${(props) => props.theme['gray-500']};
-  
 `
+WidgetBarContainer.displayName = 'WidgetBarContainer'
 
 export const IconContainer = styled.div`
   display: flex;
@@ -19,8 +19,10 @@ export const IconContainer = styled.div`
 
   &:hover {
     background-color: ${(props) => props.theme['gray-300']};
+    cursor: pointer;
   }
 `
+IconContainer.displayName = 'IconContainer'
 
 export const Icon = styled.div`
   width: 2rem;
@@ -28,3 +30,4 @@ export const Icon = styled.div`
   font-weight: bold;
   color: ${(props) => props.theme['gray-800']};
 `
+Icon.displayName = 'Icon'
