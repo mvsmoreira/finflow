@@ -1,7 +1,10 @@
+import { FilterBar } from "../../components/FilterBar"
+import { EntriesContainer } from "./styles"
+
 export const Entries = () => {
   return (
-    <>
-      <div>Entries</div>
-    </>
+    <EntriesContainer>
+      <FilterBar />
+    </EntriesContainer>
   )
 }
