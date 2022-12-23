@@ -6,7 +6,7 @@ interface NewTransactionButtonProps extends ButtonHTMLAttributes<HTMLButtonEleme
 export const NewTransactionButton = (props: NewTransactionButtonProps) => {
   return (
     <TransactionButton {...props}>
-      Nova Transação
+      Novo Lançamento
     </TransactionButton>
   )
 }

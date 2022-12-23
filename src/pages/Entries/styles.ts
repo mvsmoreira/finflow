@@ -6,6 +6,7 @@ export const EntriesContainer = styled.section`
   flex-direction: column;
   width: 78.5rem;
   gap: 2rem;
+  margin: 2rem 0;
 `
 EntriesContainer.displayName = 'EntriesContainer'
 
