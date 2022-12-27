@@ -1,10 +1,14 @@
-import * as Dialog from "@radix-ui/react-dialog"
-import { Users } from "phosphor-react"
-import { useState } from "react"
-import { Search } from "../../components/Search"
-import { Transaction } from "../../components/Transaction"
-import { TransactionModal } from "../../components/TransactionModal"
-import { EntriesContainer, NewTransactionContainer, TransactionButton, TransactionsContainer } from "./styles"
+import * as Dialog from '@radix-ui/react-dialog'
+import { useState } from 'react'
+import { Search } from '../../components/Search'
+import { Transaction } from '../../components/Transaction'
+import { TransactionModal } from '../../components/TransactionModal'
+import {
+  EntriesContainer,
+  NewTransactionContainer,
+  TransactionButton,
+  TransactionsContainer,
+} from './styles'
 
 export const Entries = () => {
   const [open, setOpen] = useState(false)
@@ -22,7 +26,7 @@ export const Entries = () => {
       </NewTransactionContainer>
       <TransactionsContainer>
         <Transaction
-          amount='R$ 5000,00'
+          amount="R$ 5000,00"
           category="Alimentação"
           date="22/12/2022"
           paid
@@ -30,7 +34,6 @@ export const Entries = () => {
           type="expense"
           observations="Test"
         />
-
       </TransactionsContainer>
     </EntriesContainer>
   )

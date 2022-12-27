@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   display: flex;
@@ -22,15 +22,16 @@ export const InfoContainer = styled.div`
 CardContainer.displayName = 'CardContainer'
 
 interface TextProps {
-  fontSize: string,
-  fontWeight: string,
+  fontSize: string
+  fontWeight: string
   color?: string
 }
 
 export const Text = styled.p<TextProps>`
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
-  color: ${(props) => props.color ? props.theme[props.color] : props.theme['gray-800']};
+  color: ${(props) =>
+    props.color ? props.theme[props.color] : props.theme['gray-800']};
 `
 Text.displayName = 'Text'
 

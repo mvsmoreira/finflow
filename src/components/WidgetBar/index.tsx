@@ -1,5 +1,5 @@
-import { Moon, Notification } from "phosphor-react"
-import { Icon, IconContainer, WidgetBarContainer } from "./styles"
+import { Moon, Notification } from 'phosphor-react'
+import { Icon, IconContainer, WidgetBarContainer } from './styles'
 
 export const WidgetBar = () => {
   return (

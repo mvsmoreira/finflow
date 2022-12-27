@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 
@@ -26,8 +26,9 @@ export const Content = styled(Dialog.Content)`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    
-    & input, textarea {
+
+    & input,
+    textarea {
       border-radius: 8px;
       border: 2px solid ${(props) => props.theme['gray-300']};
       padding: 1rem;
@@ -41,7 +42,7 @@ export const Content = styled(Dialog.Content)`
       }
 
       &:focus {
-        border: 2px solid ${(props) => props.theme['$main']};
+        border: 2px solid ${(props) => props.theme.$main};
       }
     }
 
@@ -52,7 +53,7 @@ export const Content = styled(Dialog.Content)`
 
   & button[type='submit'] {
     align-self: flex-end;
-    background: ${(props) => props.theme['$main']};
+    background: ${(props) => props.theme.$main};
     color: ${(props) => props.theme['gray-800']};
     font-size: 1rem;
     font-weight: 500;
@@ -100,7 +101,9 @@ interface TransactionTypeButtonProps {
   variant: 'revenue' | 'expense'
 }
 
-export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButtonProps>`
+export const TransactionTypeButton = styled(
+  RadioGroup.Item,
+)<TransactionTypeButtonProps>`
   background: ${(props) => props.theme['gray-100']};
   padding: 0.5rem 1rem;
   display: flex;
@@ -127,9 +130,9 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
       props.variant === 'revenue'
         ? props.theme['green-200']
         : props.theme['red-200']};
-    }
+  }
 
-    &[data-state='checked'] {
+  &[data-state='checked'] {
     transition: background 0.2s ease-in-out;
     border: 2px solid ${(props) => props.theme['gray-200']};
     background: ${(props) =>
@@ -137,10 +140,9 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
         ? props.theme['green-500']
         : props.theme['red-500']};
 
-        & svg {
-          color: ${(props) => props.theme['gray-800']};
-        }
+    & svg {
+      color: ${(props) => props.theme['gray-800']};
     }
-
+  }
 `
 TransactionTypeButton.displayName = 'TransactionTypeButton'

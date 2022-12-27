@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom"
-import { Header } from "../../components/Header"
-import { Sidebar } from "../../components/Sidebar"
-import { AppContainer } from "./styles"
+import { Outlet } from 'react-router-dom'
+import { Header } from '../../components/Header'
+import { Sidebar } from '../../components/Sidebar'
+import { AppContainer } from './styles'
 
 export const App = () => {
   return (

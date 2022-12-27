@@ -1,5 +1,5 @@
-import { useRef, useState } from "react"
-import { Icon, Input, SearchContainer } from "./styles"
+import { useRef, useState } from 'react'
+import { Icon, Input, SearchContainer } from './styles'
 
 export const Search = () => {
   const searchInputRef = useRef<HTMLInputElement>(null)
@@ -13,7 +13,7 @@ export const Search = () => {
         placeholder="Buscar lançamentos"
         ref={searchInputRef}
         value={inputValue}
-        onChange={event => setInputValue(event.target.value)}
+        onChange={(event) => setInputValue(event.target.value)}
       />
     </SearchContainer>
   )

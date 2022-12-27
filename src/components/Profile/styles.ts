@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import * as Avatar from '@radix-ui/react-avatar'
 
 export const ProfileContainer = styled.div`
@@ -62,4 +62,3 @@ export const AvatarFallback = styled(Avatar.Fallback)`
   }
 `
 AvatarFallback.displayName = 'AvatarFallback'
-

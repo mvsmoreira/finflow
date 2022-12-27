@@ -1,4 +1,12 @@
-import { AvatarContainer, AvatarFallback, AvatarImage, ProfileContainer, Subtitle, TextContainer, Title } from "./styles"
+import {
+  AvatarContainer,
+  AvatarFallback,
+  AvatarImage,
+  ProfileContainer,
+  Subtitle,
+  TextContainer,
+  Title,
+} from './styles'
 
 interface ProfileProps {
   name: string
@@ -6,7 +14,7 @@ interface ProfileProps {
   src: string
 }
 
-export const Profile = ({name, email, src}: ProfileProps) => {
+export const Profile = ({ name, email, src }: ProfileProps) => {
   return (
     <ProfileContainer>
       <TextContainer>
@@ -15,7 +23,7 @@ export const Profile = ({name, email, src}: ProfileProps) => {
       </TextContainer>
       <AvatarContainer>
         <AvatarImage src={src} alt={name} />
-        <AvatarFallback delayMs={600}/>
+        <AvatarFallback delayMs={600} />
       </AvatarContainer>
     </ProfileContainer>
   )

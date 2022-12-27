@@ -1,5 +1,5 @@
-import { MagnifyingGlass } from "phosphor-react";
-import styled from "styled-components";
+import { MagnifyingGlass } from 'phosphor-react'
+import styled from 'styled-components'
 
 export const SearchContainer = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const SearchContainer = styled.div`
   }
 
   &:focus-within {
-    border-color: ${(props) => props.theme['$main']};
+    border-color: ${(props) => props.theme.$main};
     background-color: ${(props) => props.theme['gray-100']};
   }
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const TransactionContainer = styled.div`
   display: flex;
@@ -30,11 +30,11 @@ export const MainInfo = styled.div`
     width: 2rem;
     height: 2rem;
     padding: 0.25rem;
-    color: ${(props) => props.theme['$secondary']};
+    color: ${(props) => props.theme.$secondary};
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s ease-in-out;
-    
+
     &:hover {
       background: ${(props) => props.theme['gray-300']};
     }
@@ -60,11 +60,11 @@ export const InfoBlock = styled.div`
     width: 2rem;
     height: 2rem;
     padding: 0.25rem;
-    color: ${(props) => props.theme['$secondary']};
+    color: ${(props) => props.theme.$secondary};
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s ease-in-out;
-    
+
     &:hover {
       background: ${(props) => props.theme['gray-300']};
     }

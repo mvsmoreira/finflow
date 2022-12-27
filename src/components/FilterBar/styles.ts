@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Icon } from "../WidgetBar/styles";
+import styled from 'styled-components'
+import { Icon } from '../WidgetBar/styles'
 
 export const FilterContainer = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ export const FilterContainer = styled.div`
   }
 
   &:focus-within {
-    border: 2px solid ${(props) => props.theme['$main']};
+    border: 2px solid ${(props) => props.theme.$main};
     background: ${(props) => props.theme['gray-100']};
   }
 

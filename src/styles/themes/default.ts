@@ -1,8 +1,8 @@
 export const defaultTheme = {
   white: '#FFFFFF',
 
-  '$main': '#F6AD55',
-  '$secondary': '#00B5D8',
+  $main: '#F6AD55',
+  $secondary: '#00B5D8',
   'gray-100': '#EDF2F7',
   'gray-200': '#E2E8F0',
   'gray-300': '#CBD5E0',
@@ -18,5 +18,4 @@ export const defaultTheme = {
 
   'purple-200': '#C7ABFF',
   'purple-500': '#9F7AEA',
-
 } as const

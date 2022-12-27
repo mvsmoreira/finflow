@@ -1,42 +1,42 @@
-import { ResponsivePie } from "@nivo/pie";
+import { ResponsivePie } from '@nivo/pie'
 
 const data = [
   {
-    "id": "Alimentação",
-    "label": "Alimentação",
-    "value": 0.62,
-    "color": "hsl(137, 70%, 50%)"
+    id: 'Alimentação',
+    label: 'Alimentação',
+    value: 0.62,
+    color: 'hsl(137, 70%, 50%)',
   },
   {
-    "id": "Assinaturas",
-    "label": "Assinaturas",
-    "value": 0.15,
-    "color": "hsl(103, 70%, 50%)"
+    id: 'Assinaturas',
+    label: 'Assinaturas',
+    value: 0.15,
+    color: 'hsl(103, 70%, 50%)',
   },
   {
-    "id": "Mercado",
-    "label": "Mercado",
-    "value": 0.63,
-    "color": "hsl(269, 70%, 50%)"
+    id: 'Mercado',
+    label: 'Mercado',
+    value: 0.63,
+    color: 'hsl(269, 70%, 50%)',
   },
   {
-    "id": "Casa",
-    "label": "Casa",
-    "value": 0.84,
-    "color": "hsl(310, 70%, 50%)"
+    id: 'Casa',
+    label: 'Casa',
+    value: 0.84,
+    color: 'hsl(310, 70%, 50%)',
   },
   {
-    "id": "Saúde",
-    "label": "Saúde",
-    "value": 0.34,
-    "color": "hsl(85, 70%, 50%)"
+    id: 'Saúde',
+    label: 'Saúde',
+    value: 0.34,
+    color: 'hsl(85, 70%, 50%)',
   },
   {
-    "id": "Lazer",
-    "label": "Lazer",
-    "value": 0.28,
-    "color": "hsl(29, 70%, 50%)"
-  }
+    id: 'Lazer',
+    label: 'Lazer',
+    value: 0.28,
+    color: 'hsl(29, 70%, 50%)',
+  },
 ]
 
 export const ExpensesByCategoryChart = () => {
@@ -54,12 +54,7 @@ export const ExpensesByCategoryChart = () => {
       activeOuterRadiusOffset={8}
       borderColor={{
         from: 'color',
-        modifiers: [
-          [
-            'darker',
-            0.2
-          ]
-        ]
+        modifiers: [['darker', 0.2]],
       }}
       enableArcLinkLabels={false}
       arcLabelsRadiusOffset={0.6}
@@ -84,10 +79,10 @@ export const ExpensesByCategoryChart = () => {
             {
               on: 'hover',
               style: {
-                itemTextColor: '#1A202C'
-              }
-            }
-          ]
+                itemTextColor: '#1A202C',
+              },
+            },
+          ],
         },
       ]}
     />

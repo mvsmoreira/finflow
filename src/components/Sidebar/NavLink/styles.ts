@@ -1,7 +1,7 @@
-import { NavLink, NavLinkProps } from "react-router-dom";
-import styled from "styled-components";
+import { NavLink, NavLinkProps } from 'react-router-dom'
+import styled from 'styled-components'
 
-export const Link = styled(NavLink) <NavLinkProps>`
+export const Link = styled(NavLink)<NavLinkProps>`
   display: flex;
   align-items: center;
   border-radius: 4px;
@@ -18,7 +18,7 @@ export const Link = styled(NavLink) <NavLinkProps>`
   }
 
   &.active {
-    background: ${(props) => props.theme['$main']};
+    background: ${(props) => props.theme.$main};
   }
 
   & svg {

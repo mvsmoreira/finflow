@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SummaryCardContainer = styled.div`
   display: flex;

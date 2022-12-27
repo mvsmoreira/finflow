@@ -1,8 +1,6 @@
-import { Logo } from "../Logo"
-import { Profile } from "../Profile"
-import { Search } from "../Search"
-import { WidgetBar } from "../WidgetBar"
-import { HeaderContainer } from "./styles"
+import { Logo } from '../Logo'
+import { Profile } from '../Profile'
+import { HeaderContainer } from './styles'
 
 export const Header = () => {
   return (

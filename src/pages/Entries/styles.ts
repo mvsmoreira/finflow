@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import * as Dialog from "@radix-ui/react-dialog"
+import styled from 'styled-components'
 
 export const EntriesContainer = styled.section`
   grid-area: cards;
@@ -38,7 +37,7 @@ export const TransactionButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 1rem 1.5rem;
-  background: ${(props) => props.theme['$main']};
+  background: ${(props) => props.theme.$main};
   border: none;
   border-radius: 4px;
   transition: filter 0.2s ease-in-out;
