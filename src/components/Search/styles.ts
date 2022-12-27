@@ -5,7 +5,7 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  width: 29.5rem;
+  width: 40rem;
   height: 2.75rem;
   border: 2px solid ${(props) => props.theme['gray-300']};
   border-radius: 9999px;

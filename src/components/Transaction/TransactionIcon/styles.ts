@@ -24,3 +24,4 @@ export const TransactionIconContainer = styled.div<TransactionIconProps>`
     color: ${(props) => props.theme['gray-800']};
   }
 `
+TransactionIconContainer.displayName = 'TransactionIconContainer'

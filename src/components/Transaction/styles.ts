@@ -3,7 +3,14 @@ import styled from "styled-components";
 export const TransactionContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2.5rem;
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background: ${(props) => props.theme['gray-100']};
+  }
 `
 TransactionContainer.displayName = 'TransactionContainer'
 

@@ -1,11 +1,25 @@
-import { NewTransactionButton } from "../../components/NewTransactionButton"
+import * as Dialog from "@radix-ui/react-dialog"
+import { Users } from "phosphor-react"
+import { useState } from "react"
+import { Search } from "../../components/Search"
 import { Transaction } from "../../components/Transaction"
-import { EntriesContainer, TransactionsContainer } from "./styles"
+import { TransactionModal } from "../../components/TransactionModal"
+import { EntriesContainer, NewTransactionContainer, TransactionButton, TransactionsContainer } from "./styles"
 
 export const Entries = () => {
+  const [open, setOpen] = useState(false)
+
   return (
     <EntriesContainer>
-      <NewTransactionButton />
+      <NewTransactionContainer>
+        <Search />
+        <Dialog.Root open={open} onOpenChange={setOpen}>
+          <Dialog.Trigger asChild>
+            <TransactionButton>Novo Lançamento</TransactionButton>
+          </Dialog.Trigger>
+          <TransactionModal state={setOpen} />
+        </Dialog.Root>
+      </NewTransactionContainer>
       <TransactionsContainer>
         <Transaction
           amount='R$ 5000,00'
@@ -16,15 +30,7 @@ export const Entries = () => {
           type="expense"
           observations="Test"
         />
-        <Transaction
-          amount='R$ 5000,00'
-          category="Alimentação"
-          date="22/12/2022"
-          paid
-          title="Pastel"
-          type="expense"
-          observations="Test"
-        />
+
       </TransactionsContainer>
     </EntriesContainer>
   )

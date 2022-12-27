@@ -10,7 +10,7 @@ export const Search = () => {
       <Icon />
       <Input
         type="search"
-        placeholder="Buscar na plataforma"
+        placeholder="Buscar lançamentos"
         ref={searchInputRef}
         value={inputValue}
         onChange={event => setInputValue(event.target.value)}

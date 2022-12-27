@@ -8,8 +8,7 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
-      <Search />
-      <WidgetBar />
+      {/* <WidgetBar /> */}
       <Profile
         name="Vinicius Moreira"
         email="mvs.moreira93@gmail.com"

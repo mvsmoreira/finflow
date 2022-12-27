@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as Dialog from "@radix-ui/react-dialog"
 
 export const EntriesContainer = styled.section`
   grid-area: cards;
@@ -18,6 +19,35 @@ export const TransactionsContainer = styled.div`
   background: ${(props) => props.theme['gray-200']};
   width: 68.5rem;
   margin-left: auto;
-  padding: 2rem;
+  padding: 2rem 0;
 `
 TransactionsContainer.displayName = 'TransactionsContainer'
+
+export const NewTransactionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 68.5rem;
+  margin-left: auto;
+`
+NewTransactionContainer.displayName = 'NewTransactionContainer'
+
+export const TransactionButton = styled.button`
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: ${(props) => props.theme['$main']};
+  border: none;
+  border-radius: 4px;
+  transition: filter 0.2s ease-in-out;
+  font-weight: 500;
+  font-size: 1rem;
+  color: ${(props) => props.theme['gray-800']};
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+`
+TransactionButton.displayName = 'TransactionButton'

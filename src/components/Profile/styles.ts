@@ -5,6 +5,7 @@ export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
+  margin-left: auto;
 `
 ProfileContainer.displayName = 'ProfileContainer'
 
