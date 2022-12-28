@@ -11,6 +11,8 @@ import {
   TransactionTypeButton,
 } from './styles'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext } from 'react'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -27,6 +29,7 @@ interface TransactionModalProps {
 }
 
 export const TransactionModal = ({ state }: TransactionModalProps) => {
+  const { createTransaction } = useContext(TransactionsContext)
   const {
     control,
     register,
@@ -40,7 +43,7 @@ export const TransactionModal = ({ state }: TransactionModalProps) => {
   const handleCreateNewTransaction = async (
     data: NewtransactionsFormInputs,
   ) => {
-    console.log(data)
+    createTransaction(data)
     state(false)
     reset()
   }

@@ -1,4 +1,6 @@
 import { CheckCircle, Info, PencilSimple, TrashSimple } from 'phosphor-react'
+import { HTMLAttributes, useContext } from 'react'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { amountFormatter } from '../../utils/formatter'
 import { Icon } from '../WidgetBar/styles'
 import {
@@ -9,7 +11,8 @@ import {
 } from './styles'
 import { TransactionIcon } from './TransactionIcon'
 
-interface TransactionProps {
+interface TransactionProps extends HTMLAttributes<HTMLButtonElement> {
+  transactionId: number
   type: 'revenue' | 'expense'
   title: string
   amount: number
@@ -20,6 +23,8 @@ interface TransactionProps {
 }
 
 export const Transaction = (props: TransactionProps) => {
+  const { deleteTransaction } = useContext(TransactionsContext)
+
   return (
     <TransactionContainer>
       <MainInfo>
@@ -27,13 +32,16 @@ export const Transaction = (props: TransactionProps) => {
         <p>{props.title}</p>
         <Icon as={Info} />
       </MainInfo>
-      <InfoBlock>
+      <InfoBlock paid={props.paid}>
         <p>{amountFormatter.format(props.amount)}</p>
-        <Icon as={CheckCircle} />
+        <Icon as={CheckCircle} weight={props.paid ? 'fill' : 'regular'} />
       </InfoBlock>
       <OptionsBlock>
         <Icon as={PencilSimple} />
-        <Icon as={TrashSimple} />
+        <Icon
+          as={TrashSimple}
+          onClick={() => deleteTransaction(props.transactionId)}
+        />
       </OptionsBlock>
     </TransactionContainer>
   )

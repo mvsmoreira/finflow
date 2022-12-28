@@ -42,7 +42,11 @@ export const MainInfo = styled.div`
 `
 MainInfo.displayName = 'MainInfo'
 
-export const InfoBlock = styled.div`
+interface InfoBlockProps {
+  paid?: boolean
+}
+
+export const InfoBlock = styled.div<InfoBlockProps>`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -60,7 +64,8 @@ export const InfoBlock = styled.div`
     width: 2rem;
     height: 2rem;
     padding: 0.25rem;
-    color: ${(props) => props.theme.$secondary};
+    color: ${(props) =>
+      props.paid ? props.theme['green-500'] : props.theme.$secondary};
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s ease-in-out;
