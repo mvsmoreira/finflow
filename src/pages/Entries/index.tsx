@@ -1,5 +1,4 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { Search } from '../../components/Search'
 import { Transaction } from '../../components/Transaction'
 import { TransactionModal } from '../../components/TransactionModal'
@@ -12,19 +11,15 @@ import {
 } from './styles'
 
 export const Entries = () => {
-  const [open, setOpen] = useState(false)
   const { transactions } = useContext(TransactionsContext)
 
   return (
     <EntriesContainer>
       <NewTransactionContainer>
         <Search />
-        <Dialog.Root open={open} onOpenChange={setOpen}>
-          <Dialog.Trigger asChild>
-            <TransactionButton>Novo Lançamento</TransactionButton>
-          </Dialog.Trigger>
-          <TransactionModal state={setOpen} />
-        </Dialog.Root>
+        <TransactionModal
+          trigger={<TransactionButton>Novo Lançamento</TransactionButton>}
+        />
       </NewTransactionContainer>
       <TransactionsContainer>
         {transactions.map((transaction) => {

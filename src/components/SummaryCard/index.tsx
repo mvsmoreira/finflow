@@ -11,9 +11,10 @@ import {
 interface SummaryCardProps {
   icon: ElementType
   title: string
+  amount: string
 }
 
-export const SummaryCard = ({ icon, title }: SummaryCardProps) => {
+export const SummaryCard = ({ icon, title, amount }: SummaryCardProps) => {
   return (
     <CardContainer>
       <ChartContainer>
@@ -23,8 +24,7 @@ export const SummaryCard = ({ icon, title }: SummaryCardProps) => {
       <SideInfoContainer>
         <Icon as={icon} />
         <PriceContainer>
-          <p>R$</p>
-          <span>2.500,00</span>
+          <span>{amount}</span>
         </PriceContainer>
       </SideInfoContainer>
     </CardContainer>

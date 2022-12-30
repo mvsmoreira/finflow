@@ -12,14 +12,17 @@ interface Transaction {
   created_at: string
 }
 
-type CreateTransactionProps = Omit<Transaction, 'id' | 'created_at'>
+type CreateOrUpdateTransactionProps = Omit<Transaction, 'id' | 'created_at'>
 
 interface TransactionContextProps {
   transactions: Transaction[]
   fetchTransactions: (query?: string) => Promise<void>
-  createTransaction: (data: CreateTransactionProps) => Promise<void>
+  createTransaction: (data: CreateOrUpdateTransactionProps) => Promise<void>
   deleteTransaction: (id: number) => Promise<void>
-  // patchTransaction: (id: number, field: any) => Promise<void>
+  updateTransaction: (
+    id: number,
+    data: CreateOrUpdateTransactionProps,
+  ) => Promise<void>
 }
 
 interface TransactionsProviderProps {
@@ -45,13 +48,35 @@ export const TransactionsProvider = ({
     setTransactions(response.data)
   }
 
-  const createTransaction = async (data: CreateTransactionProps) => {
+  const createTransaction = async (data: CreateOrUpdateTransactionProps) => {
     const response = await api.post('/transactions', {
       ...data,
       created_at: new Date(),
     })
 
     setTransactions((state) => [response.data, ...state])
+  }
+
+  const updateTransaction = async (
+    id: number,
+    data: CreateOrUpdateTransactionProps,
+  ) => {
+    const response = await api.patch(`/transactions/${id}`, {
+      ...data,
+    })
+
+    const updatedTransactions = transactions.map((transaction) => {
+      if (transaction.id === id) {
+        return (transaction = {
+          created_at: transaction.created_at,
+          id: transaction.id,
+          ...response.data,
+        })
+      }
+      return transaction
+    })
+
+    setTransactions(updatedTransactions)
   }
 
   const deleteTransaction = async (id: number) => {
@@ -75,6 +100,7 @@ export const TransactionsProvider = ({
         fetchTransactions,
         createTransaction,
         deleteTransaction,
+        updateTransaction,
       }}
     >
       {children}

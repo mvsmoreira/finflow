@@ -12,9 +12,11 @@ import {
 
 interface MainCardProps {
   title: string
-  amount: number
+  amount?: string
   chart?: ReactElement
   sideTotals?: boolean
+  totalRevenues?: string
+  totalExpenses?: string
 }
 
 export const MainCard = ({
@@ -22,6 +24,8 @@ export const MainCard = ({
   title,
   chart,
   sideTotals,
+  totalExpenses,
+  totalRevenues,
 }: MainCardProps) => {
   return (
     <CardContainer>
@@ -33,9 +37,11 @@ export const MainCard = ({
           <Text fontSize="2rem" fontWeight="500">
             {amount}
           </Text>
-          <Text fontSize="0.8rem" fontWeight="400" color="gray-500">
-            Total
-          </Text>
+          {amount && (
+            <Text fontSize="0.8rem" fontWeight="400" color="gray-500">
+              Total
+            </Text>
+          )}
         </div>
         <Icon as={Info} />
       </InfoContainer>
@@ -45,10 +51,10 @@ export const MainCard = ({
         {sideTotals && (
           <SideTotals>
             <Text fontWeight="500" fontSize="1.5rem" color="green-500">
-              R$ 3.541,00
+              {totalRevenues}
             </Text>
             <Text fontWeight="500" fontSize="1.5rem" color="red-500">
-              R$ 1.250,00
+              {totalExpenses}
             </Text>
           </SideTotals>
         )}

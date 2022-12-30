@@ -2,6 +2,7 @@ import { CheckCircle, Info, PencilSimple, TrashSimple } from 'phosphor-react'
 import { HTMLAttributes, useContext } from 'react'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { amountFormatter } from '../../utils/formatter'
+import { TransactionModal } from '../TransactionModal'
 import { Icon } from '../WidgetBar/styles'
 import {
   InfoBlock,
@@ -37,7 +38,10 @@ export const Transaction = (props: TransactionProps) => {
         <Icon as={CheckCircle} weight={props.paid ? 'fill' : 'regular'} />
       </InfoBlock>
       <OptionsBlock>
-        <Icon as={PencilSimple} />
+        <TransactionModal
+          trigger={<Icon as={PencilSimple} />}
+          id={props.transactionId}
+        />
         <Icon
           as={TrashSimple}
           onClick={() => deleteTransaction(props.transactionId)}

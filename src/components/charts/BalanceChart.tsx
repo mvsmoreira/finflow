@@ -1,21 +1,29 @@
 import { ResponsivePie } from '@nivo/pie'
 
-const data = [
-  {
-    id: 'Receitas',
-    label: 'Receitas',
-    value: 0.75,
-    color: 'hsl(143, 55%, 62%)',
-  },
-  {
-    id: 'Despesas',
-    label: 'Despesas',
-    value: 0.25,
-    color: 'hsl(0, 87%, 67%)',
-  },
-]
+interface BalanceChartProps {
+  revenuePercent: number
+  expensePercent: number
+}
 
-export const BalanceChart = () => {
+export const BalanceChart = ({
+  expensePercent,
+  revenuePercent,
+}: BalanceChartProps) => {
+  const data = [
+    {
+      id: 'Receitas',
+      label: 'Receitas',
+      value: revenuePercent,
+      color: 'hsl(143, 55%, 62%)',
+    },
+    {
+      id: 'Despesas',
+      label: 'Despesas',
+      value: expensePercent,
+      color: 'hsl(0, 87%, 67%)',
+    },
+  ]
+
   return (
     <ResponsivePie
       data={data}
