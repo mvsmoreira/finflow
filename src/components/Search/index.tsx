@@ -1,20 +1,29 @@
-import { useRef, useState } from 'react'
+import { ChangeEvent, forwardRef, ForwardRefRenderFunction } from 'react'
 import { Icon, Input, SearchContainer } from './styles'
 
-export const Search = () => {
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const [inputValue, setInputValue] = useState('')
+interface SearchProps {
+  type: string
+  placeholder?: string
+  value: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+}
 
+const SearchBase: ForwardRefRenderFunction<HTMLInputElement, SearchProps> = (
+  { type, placeholder, value, onChange, ...rest },
+  ref,
+) => {
   return (
     <SearchContainer>
       <Icon />
       <Input
-        type="search"
-        placeholder="Buscar lançamentos"
-        ref={searchInputRef}
-        value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        ref={ref}
+        {...rest}
       />
     </SearchContainer>
   )
 }
+export const Search = forwardRef(SearchBase)

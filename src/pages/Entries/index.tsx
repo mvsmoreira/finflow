@@ -1,8 +1,11 @@
-import { useContext } from 'react'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { Search } from '../../components/Search'
 import { Transaction } from '../../components/Transaction'
 import { TransactionModal } from '../../components/TransactionModal'
-import { TransactionsContext } from '../../contexts/TransactionsContext'
+import {
+  Transaction as TransactionProps,
+  TransactionsContext,
+} from '../../contexts/TransactionsContext'
 import {
   EntriesContainer,
   NewTransactionContainer,
@@ -10,19 +13,53 @@ import {
   TransactionsContainer,
 } from './styles'
 
+interface InputStateProps {
+  query: string
+  list: TransactionProps[]
+}
+
 export const Entries = () => {
   const { transactions } = useContext(TransactionsContext)
+
+  const [inputValue, setInputValue] = useState<InputStateProps>({
+    query: '',
+    list: [],
+  })
+
+  useEffect(() => {
+    setInputValue({
+      query: '',
+      list: transactions,
+    })
+  }, [transactions])
+
+  const handleQuery = (event: ChangeEvent<HTMLInputElement>) => {
+    const results = transactions.filter((transaction) => {
+      return transaction.description
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase())
+    })
+    setInputValue({
+      query: event.target.value,
+      list: results,
+    })
+  }
 
   return (
     <EntriesContainer>
       <NewTransactionContainer>
-        <Search />
+        <Search
+          type="search"
+          placeholder="Buscar lançamentos"
+          value={inputValue.query}
+          onChange={handleQuery}
+        />
         <TransactionModal
           trigger={<TransactionButton>Novo Lançamento</TransactionButton>}
         />
       </NewTransactionContainer>
       <TransactionsContainer>
-        {transactions.map((transaction) => {
+        {inputValue.list.map((transaction) => {
           return (
             <Transaction
               key={transaction.id}

@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import { api } from '../libs/axios'
 
-interface Transaction {
+export interface Transaction {
   id: number
   description: string
   type: 'revenue' | 'expense'
