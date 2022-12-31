@@ -8,7 +8,7 @@ export interface Transaction {
   amount: number
   category: string
   observations: string
-  paid?: boolean
+  paid: boolean
   created_at: string
 }
 
@@ -51,6 +51,7 @@ export const TransactionsProvider = ({
   const createTransaction = async (data: CreateOrUpdateTransactionProps) => {
     const response = await api.post('/transactions', {
       ...data,
+      paid: false, // Delete after implementing in the form
       created_at: new Date(),
     })
 
