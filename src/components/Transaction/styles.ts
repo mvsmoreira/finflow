@@ -79,5 +79,10 @@ InfoBlock.displayName = 'InfoBlock'
 
 export const OptionsBlock = styled(InfoBlock)`
   margin-left: 5rem;
+
+  & p {
+    font-size: 1.2rem;
+    margin-right: 2rem;
+  }
 `
 OptionsBlock.displayName = 'OptionsBlock'

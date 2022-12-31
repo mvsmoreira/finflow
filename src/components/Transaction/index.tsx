@@ -2,7 +2,7 @@ import * as Collapsible from '@radix-ui/react-collapsible'
 import { CheckCircle, Info, PencilSimple, TrashSimple } from 'phosphor-react'
 import { HTMLAttributes, useContext, useState } from 'react'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { amountFormatter } from '../../utils/formatter'
+import { amountFormatter, dateFormatter } from '../../utils/formatter'
 import { TransactionModal } from '../TransactionModal'
 import { Icon } from '../WidgetBar/styles'
 import {
@@ -29,6 +29,8 @@ export const Transaction = (props: TransactionProps) => {
   const { deleteTransaction } = useContext(TransactionsContext)
   const [open, setOpen] = useState(false)
 
+  const dateConverter = new Date(props.date)
+
   return (
     <Collapsible.Root open={open} onOpenChange={setOpen}>
       <TransactionContainer>
@@ -44,6 +46,7 @@ export const Transaction = (props: TransactionProps) => {
           <Icon as={CheckCircle} weight={props.paid ? 'fill' : 'regular'} />
         </InfoBlock>
         <OptionsBlock>
+          <p>{dateFormatter.format(dateConverter)}</p>
           <TransactionModal
             trigger={<Icon as={PencilSimple} />}
             id={props.transactionId}
