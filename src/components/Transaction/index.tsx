@@ -33,7 +33,7 @@ export const Transaction = (props: TransactionProps) => {
 
   return (
     <Collapsible.Root open={open} onOpenChange={setOpen}>
-      <TransactionContainer>
+      <TransactionContainer transactionDate={props.date} isPaid={props.paid}>
         <MainInfo>
           <TransactionIcon type={props.type} />
           <p>{props.title}</p>

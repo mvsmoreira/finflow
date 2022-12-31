@@ -18,7 +18,8 @@ export const TransactionsContainer = styled.div`
   background: ${(props) => props.theme['gray-200']};
   width: 68.5rem;
   margin-left: auto;
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
+  gap: 0.5rem;
 `
 TransactionsContainer.displayName = 'TransactionsContainer'
 

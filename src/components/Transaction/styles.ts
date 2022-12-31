@@ -1,13 +1,27 @@
 import styled from 'styled-components'
+import { compareDesc } from 'date-fns'
 
-export const TransactionContainer = styled.div`
+interface TransactionContainerProps {
+  transactionDate: string
+  isPaid: boolean
+}
+
+export const TransactionContainer = styled.div<TransactionContainerProps>`
   display: flex;
   align-items: center;
   padding: 1rem 2.5rem;
   transition: background 0.2s ease-in-out;
   cursor: pointer;
   border-radius: 4px;
-
+  background: ${(props) => {
+    if (
+      compareDesc(new Date(Date.now()), new Date(props.transactionDate)) ===
+        -1 &&
+      !props.isPaid
+    ) {
+      return 'rgba(245, 101, 101, 0.2)'
+    }
+  }};
   &:hover {
     background: ${(props) => props.theme['gray-100']};
   }
