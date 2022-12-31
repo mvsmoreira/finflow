@@ -25,7 +25,13 @@ export const Content = styled(Dialog.Content)`
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+
+    & > label {
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      margin-left: 0.4rem;
+      font-weight: 500;
+    }
 
     & input,
     textarea {
@@ -93,7 +99,6 @@ export const TransactionType = styled(RadioGroup.Root)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  /* margin-top: 0.5rem; */
 `
 TransactionType.displayName = 'TransactionType'
 
@@ -101,9 +106,8 @@ interface TransactionTypeButtonProps {
   variant: 'revenue' | 'expense'
 }
 
-export const TransactionTypeButton = styled(
-  RadioGroup.Item,
-)<TransactionTypeButtonProps>`
+// eslint-disable-next-line prettier/prettier
+export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButtonProps>`
   background: ${(props) => props.theme['gray-100']};
   padding: 0.5rem 1rem;
   display: flex;
@@ -116,7 +120,7 @@ export const TransactionTypeButton = styled(
   font-size: 1rem;
   font-weight: 500;
 
-  svg {
+  & svg {
     color: ${(props) =>
       props.variant === 'revenue'
         ? props.theme['green-500']
@@ -146,3 +150,47 @@ export const TransactionTypeButton = styled(
   }
 `
 TransactionTypeButton.displayName = 'TransactionTypeButton'
+
+export const IsPaidContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+
+  & label {
+    all: unset;
+    font-weight: 500;
+  }
+
+  & button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid ${(props) => props.theme['gray-500']};
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+      background: ${(props) => props.theme['gray-100']};
+    }
+
+    &[data-state='checked'] {
+      border: 2px solid ${(props) => props.theme['gray-200']};
+      background: ${(props) => props.theme['green-500']};
+    }
+
+    & svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    & svg[data-state='checked'] {
+      color: ${(props) => props.theme.white};
+    }
+  }
+`

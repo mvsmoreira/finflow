@@ -35,7 +35,7 @@
       "amount": 210,
       "category": "Renda Extra",
       "observations": "",
-      "paid": false,
+      "paid": true,
       "type": "revenue",
       "created_at": "2022-12-29T19:35:43.507Z",
       "id": 6
@@ -56,9 +56,19 @@
       "category": "Moradia",
       "observations": "",
       "type": "expense",
-      "paid": false,
+      "paid": true,
       "created_at": "2022-12-31T01:15:28.479Z",
       "id": 8
+    },
+    {
+      "description": "Fatura Luz",
+      "amount": 120,
+      "category": "Moradia",
+      "observations": "",
+      "type": "expense",
+      "paid": true,
+      "created_at": "2022-12-31T02:20:32.810Z",
+      "id": 9
     }
   ]
 }

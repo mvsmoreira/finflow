@@ -51,7 +51,6 @@ export const TransactionsProvider = ({
   const createTransaction = async (data: CreateOrUpdateTransactionProps) => {
     const response = await api.post('/transactions', {
       ...data,
-      paid: false, // Delete after implementing in the form
       created_at: new Date(),
     })
 

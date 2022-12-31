@@ -1,11 +1,13 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import { MinusCircle, PlusCircle, X } from 'phosphor-react'
+import * as Checkbox from '@radix-ui/react-checkbox'
+import { Check, MinusCircle, PlusCircle, X } from 'phosphor-react'
 import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Icon } from '../WidgetBar/styles'
 import {
   CloseButton,
   Content,
+  IsPaidContainer,
   Overlay,
   TransactionType,
   TransactionTypeButton,
@@ -20,6 +22,7 @@ const newTransactionFormSchema = z.object({
   category: z.string(),
   observations: z.string().max(140),
   type: z.enum(['revenue', 'expense']),
+  paid: z.boolean(),
 })
 
 type NewtransactionsFormInputs = z.infer<typeof newTransactionFormSchema>
@@ -59,6 +62,7 @@ export const TransactionModal = ({ id, trigger }: TransactionModalProps) => {
         'description',
         'observations',
         'type',
+        'paid',
       ]
       fields.forEach((field) => setValue(field, transaction![field]))
     }
@@ -114,25 +118,37 @@ export const TransactionModal = ({ id, trigger }: TransactionModalProps) => {
                 )
               }}
             />
-            <input
-              {...register('description')}
-              type="text"
-              placeholder="Descrição"
-              required
-            />
+            <label htmlFor="description">Descrição</label>
+            <input {...register('description')} type="text" required />
+            <label htmlFor="amount">Valor</label>
             <input
               {...register('amount', { valueAsNumber: true })}
               type="number"
-              placeholder="Valor"
               required
             />
-            <input
-              {...register('category')}
-              type="text"
-              placeholder="Categoria"
-              required
-            />
-            <textarea {...register('observations')} placeholder="Observações" />
+            <label htmlFor="category">Categoria</label>
+            <input {...register('category')} type="text" required />
+            <IsPaidContainer>
+              <label>Lançamento pago?</label>
+              <Controller
+                control={control}
+                name="paid"
+                render={({ field }) => {
+                  return (
+                    <Checkbox.Root
+                      onCheckedChange={field.onChange}
+                      checked={field.value}
+                    >
+                      <Checkbox.Indicator asChild>
+                        <Icon as={Check} />
+                      </Checkbox.Indicator>
+                    </Checkbox.Root>
+                  )
+                }}
+              />
+            </IsPaidContainer>
+            <label htmlFor="observations">Observações</label>
+            <textarea {...register('observations')} />
             <button type="submit" disabled={isSubmitting}>
               {isAddMode ? 'Cadastrar' : 'Salvar'}
             </button>
