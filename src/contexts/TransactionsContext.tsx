@@ -9,6 +9,7 @@ export interface Transaction {
   category: string
   observations: string
   paid: boolean
+  date: Date
   created_at: string
 }
 
@@ -23,6 +24,7 @@ interface TransactionContextProps {
     id: number,
     data: CreateOrUpdateTransactionProps,
   ) => Promise<void>
+  setIsPaid: (id: number, isPaid: boolean) => Promise<void>
 }
 
 interface TransactionsProviderProps {
@@ -39,7 +41,7 @@ export const TransactionsProvider = ({
   const fetchTransactions = async (query?: string) => {
     const response = await api.get('transactions', {
       params: {
-        _sort: 'created_at',
+        _sort: 'date',
         _order: 'desc',
         q: query,
       },
@@ -55,6 +57,7 @@ export const TransactionsProvider = ({
     })
 
     setTransactions((state) => [response.data, ...state])
+    fetchTransactions()
   }
 
   const updateTransaction = async (
@@ -77,6 +80,28 @@ export const TransactionsProvider = ({
     })
 
     setTransactions(updatedTransactions)
+    fetchTransactions()
+  }
+
+  const setIsPaid = async (id: number, isPaid: boolean) => {
+    const response = await api.patch(`/transactions/${id}`, {
+      paid: isPaid,
+    })
+
+    const updatedIsPaid = transactions.map((transaction) => {
+      if (transaction.id === id) {
+        return (transaction = {
+          created_at: transaction.created_at,
+          id: transaction.id,
+          paid: isPaid,
+          ...response.data,
+        })
+      }
+      return transaction
+    })
+
+    setTransactions(updatedIsPaid)
+    fetchTransactions()
   }
 
   const deleteTransaction = async (id: number) => {
@@ -101,6 +126,7 @@ export const TransactionsProvider = ({
         createTransaction,
         deleteTransaction,
         updateTransaction,
+        setIsPaid,
       }}
     >
       {children}

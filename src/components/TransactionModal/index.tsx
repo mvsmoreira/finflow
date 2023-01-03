@@ -11,10 +11,16 @@ import {
   Overlay,
   TransactionType,
   TransactionTypeButton,
+  TwoColumnsContainer,
 } from './styles'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ReactElement, useContext, useEffect, useState } from 'react'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
+import DatePicker, { registerLocale } from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import ptBR from 'date-fns/locale/pt-BR'
+
+registerLocale('pt-BR', ptBR)
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -22,7 +28,10 @@ const newTransactionFormSchema = z.object({
   category: z.string(),
   observations: z.string().max(140),
   type: z.enum(['revenue', 'expense']),
-  paid: z.boolean(),
+  paid: z.boolean().default(false),
+  date: z.preprocess((arg) => {
+    if (typeof arg === 'string' || arg instanceof Date) return new Date(arg)
+  }, z.date()),
 })
 
 type NewtransactionsFormInputs = z.infer<typeof newTransactionFormSchema>
@@ -44,13 +53,12 @@ export const TransactionModal = ({ id, trigger }: TransactionModalProps) => {
     control,
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
     reset,
     setValue,
   } = useForm<NewtransactionsFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
   })
-
   useEffect(() => {
     if (!isAddMode) {
       const transaction = transactions.find(
@@ -63,15 +71,14 @@ export const TransactionModal = ({ id, trigger }: TransactionModalProps) => {
         'observations',
         'type',
         'paid',
+        'date',
       ]
       fields.forEach((field) => setValue(field, transaction![field]))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleCreateNewTransaction = async (
-    data: NewtransactionsFormInputs,
-  ) => {
+  const handleTransaction = async (data: NewtransactionsFormInputs) => {
     if (isAddMode) {
       createTransaction(data)
       reset()
@@ -85,18 +92,18 @@ export const TransactionModal = ({ id, trigger }: TransactionModalProps) => {
     <Dialog.Root open={open} onOpenChange={setOpen} modal>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
-        <Overlay />
+        <Overlay onClick={() => (isAddMode ? reset() : null)} />
 
         <Content>
           <Dialog.Title>
             {isAddMode ? 'Novo Lançamento' : 'Editar Lançamento'}
           </Dialog.Title>
 
-          <CloseButton>
+          <CloseButton onClick={() => (isAddMode ? reset() : null)}>
             <Icon as={X} />
           </CloseButton>
 
-          <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+          <form onSubmit={handleSubmit(handleTransaction)}>
             <Controller
               control={control}
               name="type"
@@ -120,14 +127,43 @@ export const TransactionModal = ({ id, trigger }: TransactionModalProps) => {
             />
             <label htmlFor="description">Descrição</label>
             <input {...register('description')} type="text" required />
+            {errors.description && <p>{errors.description.message}</p>}
             <label htmlFor="amount">Valor</label>
             <input
               {...register('amount', { valueAsNumber: true })}
               type="number"
               required
             />
-            <label htmlFor="category">Categoria</label>
-            <input {...register('category')} type="text" required />
+            <TwoColumnsContainer>
+              <div>
+                <label htmlFor="category">Categoria</label>
+                <input {...register('category')} type="text" required />
+              </div>
+              <div>
+                <label htmlFor="date">Date</label>
+                <Controller
+                  control={control}
+                  name="date"
+                  render={({ field }) => {
+                    return (
+                      <>
+                        <DatePicker
+                          name="date"
+                          isClearable
+                          locale="pt-BR"
+                          dateFormat="dd/MM/yyyy"
+                          selected={
+                            isAddMode ? field.value : new Date(field.value)
+                          }
+                          onChange={(date) => field.onChange(date)}
+                        />
+                        {errors.date && errors.date?.message}
+                      </>
+                    )
+                  }}
+                />
+              </div>
+            </TwoColumnsContainer>
             <IsPaidContainer>
               <label>Lançamento pago?</label>
               <Controller
@@ -146,9 +182,13 @@ export const TransactionModal = ({ id, trigger }: TransactionModalProps) => {
                   )
                 }}
               />
+              {errors.paid && <p>{errors.paid.message}</p>}
             </IsPaidContainer>
             <label htmlFor="observations">Observações</label>
             <textarea {...register('observations')} />
+            {/* <Dialog.Close asChild onClick={() => reset()}>
+              <button type="button">Cancelar</button>
+            </Dialog.Close> */}
             <button type="submit" disabled={isSubmitting}>
               {isAddMode ? 'Cadastrar' : 'Salvar'}
             </button>

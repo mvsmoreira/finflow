@@ -12,7 +12,7 @@ export const Overlay = styled(Dialog.Overlay)`
 Overlay.displayName = 'Overlay'
 
 export const Content = styled(Dialog.Content)`
-  min-width: 28rem;
+  min-width: 26rem;
   border-radius: 8px;
   padding: 3.25rem 2.625rem;
   background: ${(props) => props.theme['gray-200']};
@@ -37,7 +37,7 @@ export const Content = styled(Dialog.Content)`
     textarea {
       border-radius: 8px;
       border: 2px solid ${(props) => props.theme['gray-300']};
-      padding: 1rem;
+      padding: 0.5rem 1rem;
       outline: none;
       font-size: 1rem;
       line-height: 1.25rem;
@@ -194,3 +194,23 @@ export const IsPaidContainer = styled.div`
     }
   }
 `
+IsPaidContainer.displayName = 'IsPaidContainer'
+
+export const TwoColumnsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  & input.rmdp-input {
+    padding: 1.1rem 1rem;
+  }
+`
+TwoColumnsContainer.displayName = 'TwoColumnsContainer'

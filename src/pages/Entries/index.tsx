@@ -66,7 +66,7 @@ export const Entries = () => {
               transactionId={transaction.id}
               amount={transaction.amount}
               category={transaction.category}
-              date={transaction.created_at}
+              date={transaction.date}
               title={transaction.description}
               type={transaction.type}
               observations={transaction.observations}

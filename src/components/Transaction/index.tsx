@@ -21,19 +21,19 @@ export interface TransactionProps extends HTMLAttributes<HTMLButtonElement> {
   amount: number
   paid: boolean
   category: string
-  date: string
+  date: Date
   observations?: string
 }
 
 export const Transaction = (props: TransactionProps) => {
-  const { deleteTransaction } = useContext(TransactionsContext)
+  const { deleteTransaction, setIsPaid } = useContext(TransactionsContext)
   const [open, setOpen] = useState(false)
 
   const dateConverter = new Date(props.date)
 
   return (
     <Collapsible.Root open={open} onOpenChange={setOpen}>
-      <TransactionContainer transactionDate={props.date} isPaid={props.paid}>
+      <TransactionContainer transactionDate={dateConverter} isPaid={props.paid}>
         <MainInfo>
           <TransactionIcon type={props.type} />
           <p>{props.title}</p>
@@ -43,7 +43,11 @@ export const Transaction = (props: TransactionProps) => {
         </MainInfo>
         <InfoBlock paid={props.paid}>
           <p>{amountFormatter.format(props.amount)}</p>
-          <Icon as={CheckCircle} weight={props.paid ? 'fill' : 'regular'} />
+          <Icon
+            as={CheckCircle}
+            weight={props.paid ? 'fill' : 'regular'}
+            onClick={() => setIsPaid(props.transactionId, !props.paid)}
+          />
         </InfoBlock>
         <OptionsBlock>
           <p>{dateFormatter.format(dateConverter)}</p>
