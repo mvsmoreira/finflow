@@ -1,8 +1,21 @@
 {
   "name": "finflow",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Um App simples para cadastro e controle de transações financeiras.",
+  "keywords": [
+    "ReactJs",
+    "Typescript",
+    "Financial App",
+    "Vite",
+    "Frontend"
+  ],
+  "author": "Vinicius Moreira",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mvsmoreira/finflow.git"
+  },
   "scripts": {
     "dev": "vite",
     "dev:server": "json-server server.json -p 3333 -w -d 500",
