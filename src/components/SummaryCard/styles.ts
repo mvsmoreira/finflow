@@ -1,53 +1,47 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border-width: 1px;
+  border: 1px solid ${(props) => props.theme['gray-300']};
   border-radius: 8px;
-  padding: 1rem;
-  min-width: 22rem;
-  min-height: 8.75rem;
+  padding: 1.5rem;
   background: ${(props) => props.theme['gray-200']};
+
+  & header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  & strong {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1.8rem;
+  }
 `
 CardContainer.displayName = 'CardContainer'
 
-export const ChartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 10rem;
-  min-height: 5rem;
-  height: 5rem;
+interface iconProps {
+  variant?: 'revenue' | 'expense'
+}
 
-  & p {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-`
-ChartContainer.displayName = 'ChartContainer'
-
-export const SideInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex: 1;
-  margin-left: 1rem;
-`
-SideInfoContainer.displayName = 'SideInfoContainer'
-
-export const Icon = styled.div`
+export const Icon = styled.div<iconProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 4px;
-  padding: 0.2rem;
+  padding: 0.3rem;
   transition: background 0.2s ease-in-out;
-  color: ${(props) => props.theme['gray-500']};
+  color: ${(props) => {
+    if (props.variant === 'revenue') {
+      return props.theme['green-500']
+    } else if (props.variant === 'expense') {
+      return props.theme['red-500']
+    } else {
+      return props.theme['gray-500']
+    }
+  }};
 
   &:hover {
     background: ${(props) => props.theme['gray-300']};

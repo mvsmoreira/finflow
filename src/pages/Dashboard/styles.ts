@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
 export const SummaryCardContainer = styled.div`
-  display: flex;
+  display: grid;
   grid-area: summary-cards;
-  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
   margin-top: 2rem;
 `
 SummaryCardContainer.displayName = 'SummaryCardContainer'

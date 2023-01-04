@@ -1,32 +1,27 @@
 import { ElementType } from 'react'
-import { SummaryCardChart } from '../charts/SummaryCardChart'
-import {
-  CardContainer,
-  ChartContainer,
-  Icon,
-  PriceContainer,
-  SideInfoContainer,
-} from './styles'
+import { amountFormatter } from '../../utils/formatter'
+import { CardContainer, Icon } from './styles'
 
 interface SummaryCardProps {
   icon: ElementType
   title: string
-  amount: string
+  amount: number
+  type?: 'revenue' | 'expense'
 }
 
-export const SummaryCard = ({ icon, title, amount }: SummaryCardProps) => {
+export const SummaryCard = ({
+  icon,
+  title,
+  amount,
+  type,
+}: SummaryCardProps) => {
   return (
     <CardContainer>
-      <ChartContainer>
-        <p>{title}</p>
-        <SummaryCardChart />
-      </ChartContainer>
-      <SideInfoContainer>
-        <Icon as={icon} />
-        <PriceContainer>
-          <span>{amount}</span>
-        </PriceContainer>
-      </SideInfoContainer>
+      <header>
+        <span>{title}</span>
+        <Icon as={icon} variant={type} />
+      </header>
+      <strong>{amountFormatter.format(amount)}</strong>
     </CardContainer>
   )
 }

@@ -1,5 +1,6 @@
 import { Info } from 'phosphor-react'
 import { ReactElement } from 'react'
+import { amountFormatter } from '../../utils/formatter'
 import { Icon } from '../SummaryCard/styles'
 import {
   CardContainer,
@@ -12,11 +13,11 @@ import {
 
 interface MainCardProps {
   title: string
-  amount?: string
+  amount?: number
   chart?: ReactElement
   sideTotals?: boolean
-  totalRevenues?: string
-  totalExpenses?: string
+  totalRevenues?: number
+  totalExpenses?: number
 }
 
 export const MainCard = ({
@@ -35,7 +36,7 @@ export const MainCard = ({
             {title}
           </Text>
           <Text fontSize="2rem" fontWeight="500">
-            {amount}
+            {amount && amountFormatter.format(amount)}
           </Text>
           {amount && (
             <Text fontSize="0.8rem" fontWeight="400" color="gray-500">
@@ -51,10 +52,10 @@ export const MainCard = ({
         {sideTotals && (
           <SideTotals>
             <Text fontWeight="500" fontSize="1.5rem" color="green-500">
-              {totalRevenues}
+              {totalRevenues && amountFormatter.format(totalRevenues)}
             </Text>
             <Text fontWeight="500" fontSize="1.5rem" color="red-500">
-              {totalExpenses}
+              {totalExpenses && amountFormatter.format(totalExpenses)}
             </Text>
           </SideTotals>
         )}
