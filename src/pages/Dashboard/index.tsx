@@ -1,6 +1,5 @@
-import { EyeSlash, MinusCircle, PlusCircle } from 'phosphor-react'
+import { CurrencyDollar, MinusCircle, PlusCircle } from 'phosphor-react'
 import { BalanceChart } from '../../components/charts/BalanceChart'
-import { ExpensesByCategoryChart } from '../../components/charts/ExpensesByCategoryChart'
 import { MainCard } from '../../components/MainCard'
 import { SummaryCard } from '../../components/SummaryCard'
 import { useSummary } from '../../hooks/useSummary'
@@ -12,7 +11,7 @@ export const Dashboard = () => {
     <>
       <SummaryCardContainer>
         <SummaryCard
-          icon={EyeSlash}
+          icon={CurrencyDollar}
           title="Saldo Geral"
           amount={summary.balance}
         />
@@ -43,10 +42,10 @@ export const Dashboard = () => {
           }
           sideTotals
         />
-        <MainCard
+        {/* <MainCard
           title="Gastos por categoria"
           chart={<ExpensesByCategoryChart />}
-        />
+        /> */}
       </MainCardContainer>
     </>
   )
