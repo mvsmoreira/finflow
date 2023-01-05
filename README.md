@@ -36,7 +36,7 @@ Esse app foi desenvolvido para estudos e prática nas [tecnologias](#tecnologias
 - [ ] Paginação de transações por meses
 - [ ] Resumo de saldo na página de transações
 - [ ] Autenticação e login com github e Google
-- [] Suporte a contas e cartões de crédito
+- [ ] Suporte a contas e cartões de crédito
 - [ ] Suporte a transferência entre contas cadastradas
 - [ ] Filtro avançado (substitui a busca)
 - [ ] Relatórios financeiros
@@ -62,7 +62,7 @@ O projeto está hospedado na [Vercel](https://vercel.com/). Você pode conferir 
 
 ## Tecnologias
 O App é desenvolvido com [Vite](https://vitejs.dev/) usando [ReactJs](https://reactjs.org/) e [Typescript](https://www.typescriptlang.org/). </br>
-Atualmente o projeto é focado em frontend com ênfase no uso de hooks e contextos a fim de aprender melhor seus respectivos usos. Futuramente será desenvolvido um backend dedicado se tornando um app fullstack, porém no momento conta apenas com um micro servidor para simular seu comportamento com o [JSON Server](https://www.npmjs.com/package/json-server).
+Atualmente o projeto é focado em frontend com ênfase no uso de hooks e contextos a fim de aprender melhor seus respectivos usos. Futuramente será desenvolvido um backend dedicado se tornando um app fullstack, porém no momento conta apenas com um [micro servidor](https://github.com/mvsmoreira/finflow-server) para simular seu comportamento com o [JSON Server](https://www.npmjs.com/package/json-server).
 
 ### Libs
 As demais bibliotecas usadas no projeto são:
@@ -92,15 +92,10 @@ $ cd finflow
 # Instale as dependências
 $ yarn
 
-# Execute o servidor
-yarn dev:server
-
-# O servidor inciará na porta:3333. - acesse <http://localhost:3333/transactions> para visualizar o arquivo .json com todas as transações.
-
 # Execute a aplicação em modo de desenvolvimento
 $ yarn dev
 
-# A aplicação inciará na porta:5173 - acesse <http://localhost:5173/dashboard>
+# A aplicação inciará na porta:5173 - acesse <http://localhost:5173>
 ```
 
 ## Autor
