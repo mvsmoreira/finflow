@@ -32,20 +32,20 @@ Esse app foi desenvolvido para estudos e prática nas [tecnologias](#tecnologias
 - [x] Cadastro, edição e exclusão de uma transação
 - [x] Cadastro de transação futura (Ainda não efetuada)
 - [x] Sistema de indicação de transação atrasada
-- [] Cadastro de categorias
-- [] Paginação de transações por meses
-- [] Resumo de saldo na página de transações
-- [] Autenticação e login com github e Google
+- [ ] Cadastro de categorias
+- [ ] Paginação de transações por meses
+- [ ] Resumo de saldo na página de transações
+- [ ] Autenticação e login com github e Google
 - [] Suporte a contas e cartões de crédito
-- [] Suporte a transferência entre contas cadastradas
-- [] Filtro avançado (substitui a busca)
-- [] Relatórios financeiros
-- [] Modo escuro
+- [ ] Suporte a transferência entre contas cadastradas
+- [ ] Filtro avançado (substitui a busca)
+- [ ] Relatórios financeiros
+- [ ] Modo escuro
 
 Você pode conferir meu design completo do projeto no [Figma](https://www.figma.com/file/ABihWOzsA7CZ6kEy1p3lFb/FinFlow?node-id=0%3A1&t=zFNYaC5oBVUK00YG-1).
 
 ## Demo
-O projeto está hospedado na [Vercel](https://vercel.com/). Você pode conferir a demo [aqui](#).
+O projeto está hospedado na [Vercel](https://vercel.com/). Você pode conferir a demo [aqui](https://finflow-six.vercel.app/).
 
 ### Screens
 
