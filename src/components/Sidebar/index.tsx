@@ -6,7 +6,7 @@ import { SidebarContainer } from './styles'
 export const Sidebar = () => {
   return (
     <SidebarContainer>
-      <NavLink to="/dashboard" title="Dashboard">
+      <NavLink to="/" title="Dashboard">
         <Icon as={Gauge} />
       </NavLink>
       <NavLink to="/entries" title="Lançamentos">
